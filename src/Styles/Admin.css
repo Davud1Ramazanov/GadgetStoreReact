@@ -1,19 +1,4 @@
-.App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
-  .window-reg{
+.window-enter{
     padding: 15px;
     height: 300px;
     width: 300px;
@@ -22,7 +7,7 @@
     border-radius: 10px;
 }
 
-#reg{
+#enter{
    text-align: center;
    font-family: 'Roboto Slab', serif;
    font-weight: normal;
@@ -49,13 +34,6 @@ input {
     border-radius: 10px;
     box-sizing: border-box;
     margin: auto;
-}
-
-.login-reg {
-    background-color: #fafafa;
-    border:0;
-    box-shadow:0 0 4px rgba(0,0,0,0.3);
-    transition: .3s box-shadow;
 }
 
 .button{
