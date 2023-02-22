@@ -15,15 +15,18 @@ function Registration() {
           <p id="reg">Окно регистрации</p>
           <input id="login-reg" type="text" placeholder="Введите логин" /><br></br>
           <input id="password-reg" type="text" placeholder="Введите пароль" /><br></br>
+          <input id="email-reg" type="text" placeholder="Введите почту" /><br></br>
           <button className="button" onClick={() => {
-            const login = document.getElementById('login-reg').value;
+            const userName = document.getElementById('login-reg').value;
             const password = document.getElementById('password-reg').value;
+            const email = document.getElementById('email-reg').value;
             axios({
               method: 'post',
-              url: 'https://localhost:7243/api/authentication/registration',
+              url: 'https://localhost:7108/api/Authenticate/regUser',
               data: {
-                "login": login,
-                "password": password
+                "userName": userName,
+                "password": password,
+                "email": email
               },
               dataType: "dataType",
               headers: {
@@ -32,7 +35,7 @@ function Registration() {
               },
             })
               .then(data => sessionStorage.setItem('token', data['data']['token']))
-              .then(response => {navigate('/table')})  
+              .then(response => {navigate('/menu')})  
           }}>Enter</button>
         </div>
       </header>

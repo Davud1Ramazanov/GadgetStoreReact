@@ -16,13 +16,13 @@ function App() {
           <input id="login-enter" type="text" placeholder="Введите логин" /><br></br>
           <input id="password-enter" type="text" placeholder="Введите пароль" /><br></br>
           <button className="button" onClick={() => {
-            const login = document.getElementById('login-enter').value;
+            const userName = document.getElementById('login-enter').value;
             const password = document.getElementById('password-enter').value;
             axios({
               method: 'post',
-              url: 'https://localhost:7081/api/Authentication/login',
+              url: 'https://localhost:7108/api/Authenticate/login',
               data: {
-                "email": login,
+                "userName": userName,
                 "password": password
               },
               dataType: "dataType",
@@ -34,8 +34,9 @@ function App() {
               .then(data => sessionStorage.setItem('token', data['data']['token']))
               .then(response => {navigate('/menu')})
           }}>Enter</button>
-          <Link to="/registration" style={{ padding: "10px" }}>Registration</Link><br/>
-          <Link to="/admin" style={{ padding: "10px" }}>For Admin</Link>
+          <Link to="/registration" style={{ padding: "10px" }}>Нет аккаунта? Зарегистрируйтесь.</Link><br/>
+          <Link to="/admin" style={{ padding: "5px" }}>Для администратора</Link>
+          <Link to="/manager" style={{ padding: "5px" }}>Для менеджера</Link>
         <Outlet/>
         </div>
       </header>

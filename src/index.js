@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import SignAdmin from './Pages/SignAdmin';
 import Registration from './Pages/Registration';
 import MainMenu from './Pages/MainMenu';
-import Table from './Pages/Table';
+import CategoryTables from './Pages/CategoryTables';
+import SignManager from './Pages/SignManager';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,8 +18,9 @@ root.render(
                 <Route path='/' element={<App />}></Route>
                 <Route path='/menu' element={<MainMenu />}></Route>
                 <Route path='/registration' element={<Registration />}></Route>
-                <Route path='/table' element={<Table />}></Route>
+                <Route path='/table' element={<CategoryTables />}></Route>
                 <Route path='/admin' element={<SignAdmin />}></Route>
+                <Route path='/manager' element={<SignManager />}></Route>
             </Routes>
         </BrowserRouter>
   </React.StrictMode>
