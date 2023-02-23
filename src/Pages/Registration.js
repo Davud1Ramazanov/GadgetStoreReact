@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 function Registration() {
 
   const navigate = useNavigate();
-  var item_value = sessionStorage.getItem("token");
-  sessionStorage.setItem("token", item_value);
 
   return (
     <div className="App">
@@ -34,8 +32,8 @@ function Registration() {
                 'Content-Type': 'application/json'
               },
             })
-              .then(data => sessionStorage.setItem('token', data['data']['token']))
-              .then(response => {navigate('/menu')})  
+              .then(data => {alert("Succsessfully created user" + userName)})
+              .then(response => {navigate('/')})  
           }}>Enter</button>
         </div>
       </header>

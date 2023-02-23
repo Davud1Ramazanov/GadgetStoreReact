@@ -35,7 +35,7 @@ function App() {
               .then(response => {navigate('/menu')})
           }}>Enter</button>
           <Link to="/registration" style={{ padding: "10px" }}>Нет аккаунта? Зарегистрируйтесь.</Link><br/>
-          <Link to="/admin" style={{ padding: "5px" }}>Для администратора</Link>
+          <Link to="/admin" style={{ padding: "5px" }}>Для администратора</Link><br/>
           <Link to="/manager" style={{ padding: "5px" }}>Для менеджера</Link>
         <Outlet/>
         </div>

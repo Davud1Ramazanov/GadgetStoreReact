@@ -9,6 +9,13 @@ function MainMenu() {
     }
 
     const [gadgetCount, setGadgetCount] = useState([]);
+    const cities = [
+        { name: 'Днепр', phoneNumber: '+38(098) 555-5555' },
+        { name: 'Харьков', phoneNumber: '+38(097) 555-5555' },
+        { name: 'Киев', phoneNumber: '+38(096) 555-5555' },
+        { name: 'Запорожье', phoneNumber: '+38(098) 535-5255' },
+        { name: 'Херсон', phoneNumber: '+38(098) 515-5545' },
+    ];
 
     useEffect(() => {
         axios({
@@ -43,13 +50,24 @@ function MainMenu() {
                 <div className="cards-gadget">
                     {gadgetCount.map(gadget => (
                         <div className='card' key={gadget.id}>
-                            <img src={`${gadget.image}`} className="regular-img" style={{height: 130, width: 100}}></img>
+                            <img src={`${gadget.image}`} className="regular-img" style={{ height: 130, width: 100 }}></img>
                             <h2>{gadget.name}</h2>
                             <p>{gadget.price} USD</p>
                             <button className="buy-button">Add to Cart</button>
                         </div>
                     ))}
                 </div>
+                <footer style={{ backgroundColor: '#f5f5f5', padding: '20px 0', marginTop: 'auto' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '1200px', margin: '0 auto' }}>
+                        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                            {cities.map(city => (
+                                <p key={city.name} style={{ marginRight: '20px', marginBottom: '10px' }}>
+                                    {city.name}: <a href={`tel:${city.phoneNumber}`} style={{ color: '#333', textDecoration: 'none' }}>{city.phoneNumber}</a>
+                                </p>
+                            ))}
+                        </div>
+                    </div>
+                </footer>
             </header>
         </div>
     );
