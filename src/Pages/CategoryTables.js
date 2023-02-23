@@ -10,6 +10,8 @@ function CategoryTables() {
 
     const [category, setCategory] = useState([]);
     const [gadget, setGadget] = useState([]);
+    const [userRole, setUserRole] = useState('');
+
 
     useEffect(() => {
         axios({
@@ -22,6 +24,18 @@ function CategoryTables() {
             },
         }).then(response => {
             setCategory(response.data);
+        })
+
+       axios({
+            method: 'GET',
+            url: 'https://localhost:7108/api/Managers/getUserRole',
+            headers: {
+                'Authorization': 'Bearer ' + getToken(),
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }).then(response => {
+            setUserRole(response.data.role);
         })
 
         axios({
@@ -137,6 +151,7 @@ function CategoryTables() {
                 </div>
 
                 <div id="for-crud">
+                {userRole === 'Admin' && (
                     <div className="container">
                         <h1>Create Manager</h1>
                         <input id="add-login" type="text" className="input" placeholder="Enter login" />
@@ -163,35 +178,38 @@ function CategoryTables() {
                             }).then(data => alert("Succsessfull"))
                         }}>Create</button>
                     </div>
+                )}
 
-                    <div className="container">
-                        <h1>Delete Manager</h1>
-                        <input id="del-login" type="text" className="input" placeholder="Enter login" />
-                        <br />
-                        <button id="del-manager" onClick={() => {
-                            const userName = document.getElementById('del-login').value;
-                            axios({
-                                method: 'POST',
-                                url: 'https://localhost:7108/api/Managers/delManager',
-                                data: {
-                                    "userName": userName,
-                                    "password": "string",
-                                    "email": "string"
-                                },
-                                dataType: 'dataType',
-                                headers: {
-                                    'Authorization': 'Bearer ' + getToken(),
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                },
-                            }).then(function (response) {
-                                alert('Manager deleted successfully!');
-                            })
-                                .catch(function (error) {
-                                    alert('An error occurred while deleting user with username ' + userName);
-                                });
-                        }}>Delete</button>
-                    </div>
+                    {userRole === 'Admin' && (
+                        <div className="container">
+                            <h1>Delete Manager</h1>
+                            <input id="del-login" type="text" className="input" placeholder="Enter login" />
+                            <br />
+                            <button id="del-manager" onClick={() => {
+                                const userName = document.getElementById('del-login').value;
+                                axios({
+                                    method: 'POST',
+                                    url: 'https://localhost:7108/api/Managers/delManager',
+                                    data: {
+                                        "userName": userName,
+                                        "password": "string",
+                                        "email": "string"
+                                    },
+                                    dataType: 'dataType',
+                                    headers: {
+                                        'Authorization': 'Bearer ' + getToken(),
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json'
+                                    },
+                                }).then(function (response) {
+                                    alert('Manager deleted successfully!');
+                                })
+                                    .catch(function (error) {
+                                        alert('An error occurred while deleting user with username ' + userName);
+                                    });
+                            }}>Delete</button>
+                        </div>
+                    )}
 
                     <div className="container">
                         <h1>Create Categories</h1>
