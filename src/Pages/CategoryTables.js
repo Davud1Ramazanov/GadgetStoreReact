@@ -171,20 +171,22 @@ function CategoryTables() {
                         <button id="del-manager" onClick={() => {
                             const userName = document.getElementById('del-login').value;
                             axios({
-                                method: 'post',
-                                url: 'https://localhost:7108/api/Authenticate/delManager',
+                                method: 'POST',
+                                url: 'https://localhost:7108/api/Managers/delManager',
+                                data: {
+                                    "userName": userName,
+                                    "password": "string",
+                                    "email": "string"
+                                },
+                                dataType: 'dataType',
                                 headers: {
                                     'Authorization': 'Bearer ' + getToken(),
                                     'Accept': 'application/json',
                                     'Content-Type': 'application/json'
                                 },
-                                data: {
-                                    "userName": userName
-                                }
+                            }).then(function (response) {
+                                alert('Manager deleted successfully!');
                             })
-                                .then(function (response) {
-                                    alert('Manager deleted successfully!');
-                                })
                                 .catch(function (error) {
                                     alert('An error occurred while deleting user with username ' + userName);
                                 });
@@ -192,7 +194,7 @@ function CategoryTables() {
                     </div>
 
                     <div className="container">
-                        <h1>Create categories</h1>
+                        <h1>Create Categories</h1>
                         <input id="add-namegadget" type="text" className="input" placeholder="Enter name category" />
                         <br /><button id="add-gadgetname" onClick={() => {
                             const addCategory = document.getElementById('add-namegadget').value;
@@ -212,7 +214,7 @@ function CategoryTables() {
                     </div>
 
                     <div className="container">
-                        <h1>Create gadget</h1>
+                        <h1>Create Gadget</h1>
                         <input id="add-idcategory" type="number" className="input" placeholder="Enter id category" />
                         <input id="add-img" type="text" className="input" placeholder="Enter url image" />
                         <input id="add-name" type="text" className="input" placeholder="Enter name product" />
@@ -270,14 +272,19 @@ function CategoryTables() {
                                         "name": editGadget,
                                         "price": editPrice,
                                         "image": editImg
+                                    },
+                                    headers: {
+                                        'Authorization': 'Bearer ' + getToken(),
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json'
                                     }
                                 })
-                                .then(response => {
-                                    alert("Succsessfull");
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                });
+                                    .then(response => {
+                                        alert("Succsessfull");
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
                             }}>Create</button>
                         </div>
                     </div>
