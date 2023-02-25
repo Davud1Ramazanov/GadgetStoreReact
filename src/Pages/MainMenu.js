@@ -8,6 +8,22 @@ function MainMenu() {
         return sessionStorage.getItem("token");
     }
 
+    function findGadgets(minPrice, maxPrice) {
+        const url = 'https://localhost:7108/api/Gadgets/FilterPriceGadgets';
+        const params = {
+          minPrice: minPrice,
+          maxPrice: maxPrice
+        };
+
+        axios.get(url, { params })
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+
     const [gadgetCount, setGadgetCount] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [search, setSearch] = useState("");
@@ -63,6 +79,11 @@ function MainMenu() {
             .then((data) => setGadgets(data));
     };
 
+    function handleClick() {
+        const minValue = document.getElementById('minvalue').value;
+        const maxValue = document.getElementById('maxvalue').value;
+        findGadgets(minValue, maxValue);
+      }
 
     return (
         <div className="App">
@@ -72,7 +93,7 @@ function MainMenu() {
                         <li id="phones" onClick={() => setSelectedCategory('phones')}><a href="">Phones</a></li>
                         <li onClick={() => setSelectedCategory('laptops')}><a href="">Laptop</a></li>
                         <li onClick={() => setSelectedCategory('smartwatch')}><a href="">Smart Watch</a></li>
-                        <li><button class="btn"><i class="fa fa-home"></i>&#128722;</button></li>
+                        <li><button className="btn"><i className="fa fa-home"></i>&#128722;</button></li>
                     </ul>
                 </nav>
                 {gadgets.map((gadget) => (
@@ -87,6 +108,13 @@ function MainMenu() {
                             <li key={gadget.id}>{gadget.name}</li>
                         ))}
                     </ul>
+                </div>
+
+                <div className='filter'>
+                    <h1>Filter</h1>
+                    <input id="minvalue" type="number" placeholder='Enter min price'></input>
+                    <input id="maxvalue" type="number" placeholder='Enter max price'></input>
+                    <button id="findGadget" onClick={handleClick}>Find</button>
                 </div>
 
                 <h1>Gadgets</h1>
