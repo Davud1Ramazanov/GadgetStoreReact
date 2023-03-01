@@ -117,6 +117,18 @@ function MainMenu() {
                     <button id="findGadget" onClick={handleClick}>Find</button>
                 </div>
 
+
+                {/* ТУТ ДОДЕЛАТЬ НУЖНО КАРТОЧКУ В КОРЗИНУ ДЛЯ ПОКУПКИ*/}
+                {/* <div className='cardShop'>
+                    //Место для map
+                        <div className='dataShop'>
+                            <img src={`screen url`} style={{height: 130, width: 100, float: 'left' }}></img>
+                            <h2>Gadget Name</h2>
+                            <p>Price</p>
+                            <button>Buy</button>
+                        </div>
+                </div> */}
+
                 <h1>Gadgets</h1>
                 <div className="cards-gadget">
                     {gadgetCount.map(gadget => (

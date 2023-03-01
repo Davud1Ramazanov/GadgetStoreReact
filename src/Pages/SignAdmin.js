@@ -9,7 +9,7 @@ function SignAdmin() {
     sessionStorage.setItem("token", item_value);
 
     return (
-        <div className="window-enter">
+        <div className="window-enter-adm">
             <p id="enter">Приветствую Администратор!</p>
             <input id="login-enter" type="text" placeholder="Введите логин" /><br />
             <input id="password-enter" type="text" placeholder="Введите пароль" /><br />

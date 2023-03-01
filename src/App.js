@@ -1,6 +1,6 @@
 import './Styles/App.css'
 import axios from 'axios';
-import { Link, Outlet, useNavigate} from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 function App() {
 
@@ -32,12 +32,14 @@ function App() {
               },
             })
               .then(data => sessionStorage.setItem('token', data['data']['token']))
-              .then(response => {navigate('/menu')})
+              .then(response => { navigate('/menu') })
           }}>Enter</button>
-          <Link to="/registration" style={{ padding: "10px" }}>Нет аккаунта? Зарегистрируйтесь.</Link><br/>
-          <Link to="/admin" style={{ padding: "5px" }}>Для администратора</Link><br/>
-          <Link to="/manager" style={{ padding: "5px" }}>Для менеджера</Link>
-        <Outlet/>
+          <div className='help-nav'>
+            <Link to="/registration" style={{ padding: "10px" }}>Нет аккаунта? Зарегистрируйтесь.</Link><br />
+            <Link to="/admin" style={{ padding: "5px" }}>Для администратора</Link><br />
+            <Link to="/manager" style={{ padding: "5px" }}>Для менеджера</Link>
+            <Outlet />
+          </div>
         </div>
       </header>
     </div>

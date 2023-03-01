@@ -283,3 +283,9 @@ footer a {
 #findGadget :active {
   transform: scale(0.95);
 }
+
+.cardShop{
+  height: 100px;
+  width: 300px;
+  margin: auto;
+}
